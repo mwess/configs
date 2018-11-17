@@ -1,0 +1,38 @@
+#/bin/bash
+
+keyword_list="ls"
+cmd_rm="rm"
+notesdir=~/.notes
+defaultnotes=$notesdir/defaultnotebook.notes
+
+#First time initialize
+if [ ! -d $notesdir ];
+then
+    mkdir $notesdir;
+fi
+
+if [ "$#" == "0" ];
+then
+    $EDITOR $defaultnotes;
+    exit;
+fi
+
+if [ "$#" == "1" ];
+then
+    if [ "$1" == "$keyword_list" ];
+    then
+        ls $notesdir;
+    else
+        $EDITOR $notesdir/$1;
+    fi
+    exit;
+fi
+
+if [ "$#" == "2" ];
+then
+    if [ "$1" == "$cmd_rm" ];
+    then
+        rm $notesdir/$2;
+    fi
+    exit;
+fi
