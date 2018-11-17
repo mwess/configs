@@ -1,0 +1,1 @@
+/home/maxi/.vimrc
